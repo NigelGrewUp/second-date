@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Will we go on a second date?</title>
+    <meta name="description" content="A cute, romantic, and playful interactive website asking for a second date." />
+    <meta property="og:title" content="Will we go on a second date?" />
+    <meta property="og:description" content="A cute, romantic, and playful interactive website asking for a second date." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#fffcf2" />
+
+    <!-- Google Fonts: Gaegu (Doodle/Playful) + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- EmailJS Official Browser SDK CDN -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- Ambient Background Decorations -->
+    <div id="background-decorations" class="background-decorations" aria-hidden="true"></div>
+
+    <!-- Celebration Confetti & Hearts Canvas -->
+    <canvas id="celebration-canvas" aria-hidden="true"></canvas>
+
+    <!-- Main Container -->
+    <main class="container">
+      <div class="card">
+        <!-- ========================================== -->
+        <!-- SCREEN 1: THE BIG QUESTION                 -->
+        <!-- ========================================== -->
+        <section id="screen-1" class="screen active" aria-labelledby="question-heading">
+          <div class="media-box">
+            <div class="gif-fallback" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <img
+              id="shy-gif"
+              src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDB6MnNmcHIyaHU5d3Bnd21kc3BmcHhkcXV2ZzgyNzg1ZTB1cmh6YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l49K0pPIf3YYv5yMg/giphy.gif"
+              alt="Cute shy character asking for a second date"
+              loading="eager"
+            />
+          </div>
+
+          <div>
+            <p class="subtitle"></p>
+            <h1 id="question-heading">Will we go on a second date?</h1>
+          </div>
+
+          <div class="button-group" id="btn-group">
+            <button
+              id="no-btn"
+              type="button"
+              class="btn"
+              aria-label="No, not interested"
+            >
+              No
+            </button>
+            <button
+              id="yes-btn"
+              type="button"
+              class="btn btn-primary"
+              aria-label="Yes, let's go on a second date!"
+            >
+              Yes 
+            </button>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SCREEN 2: DATE & TIME SELECTION            -->
+        <!-- ========================================== -->
+        <section id="screen-2" class="screen" aria-labelledby="yay-heading">
+          <div class="media-box">
+            <div class="gif-fallback" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <img
+              id="happy-gif"
+              src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWUzZmZ1NWh4NGR4NHMxOWMybjMxb2ppaXh2bWdocnN3emF2NHRxaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WUIMtYysaO0sE/giphy.gif"
+              alt="Happy celebrating character"
+              loading="lazy"
+            />
+          </div>
+
+          <div>
+            <h1 id="yay-heading">like you had a choise</h1>
+            <p class="subtitle">pick when</p>
+          </div>
+
+          <form id="date-form" class="date-form" novalidate>
+            <div class="form-group">
+              <label for="date-input">Date</label>
+              <input
+                type="date"
+                id="date-input"
+                name="date"
+                class="form-input"
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="time-input">Time</label>
+              <input
+                type="time"
+                id="time-input"
+                name="time"
+                class="form-input"
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div
+              id="form-error"
+              class="error-msg"
+              role="alert"
+              aria-live="polite"
+            ></div>
+
+            <button
+              type="submit"
+              id="send-btn"
+              class="btn btn-primary"
+              style="width: 100%;"
+            >
+              Send 
+            </button>
+          </form>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SCREEN 3: SUCCESS & CONFIRMATION           -->
+        <!-- ========================================== -->
+        <section id="screen-3" class="screen" aria-labelledby="success-heading">
+          <div class="media-box">
+            <div class="gif-fallback" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <img
+              id="success-gif"
+              src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExenlxYmozYnZzajN0ejYycDcya2RqNmVucWVmMXR2eHJ6MTcyeDU5YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/HuGCwDXj4nQnS/giphy.gif"
+              alt="Success celebration"
+              loading="lazy"
+            />
+          </div>
+
+          <div>
+            <h1 id="success-heading">It's a date!</h1>
+            <p class="subtitle">I can't wait!</p>
+          </div>
+
+          <div class="ticket" aria-label="Date Details">
+            <div class="ticket-header">
+              <span>Date Invitation</span>
+              <span>Confirmed ✨</span>
+            </div>
+            <div class="ticket-row">
+              <span>Date</span>
+              <strong id="chosen-date-display">-</strong>
+            </div>
+            <div class="ticket-row">
+              <span>Time</span>
+              <strong id="chosen-time-display">-</strong>
+            </div>
+          </div>
+
+          <a
+            id="calendar-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cal-link"
+          >
+            Add to Google Calendar 📅
+          </a>
+        </section>
+      </div>
+    </main>
+
+    <!-- Main Logic Script -->
+    <script src="./script.js"></script>
+  </body>
+</html>
