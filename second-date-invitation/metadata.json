@@ -1,6 +1,0 @@
-{
-  "name": "Second Date Invitation",
-  "description": "A cute, romantic, and playful interactive website asking for a second date.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
